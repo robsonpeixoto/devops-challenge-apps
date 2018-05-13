@@ -6,3 +6,19 @@ variable "availability_zones" {
   type        = "list"
   description = "The az avaiable to launch application"
 }
+
+variable "database_name" {
+  description = "The database name"
+}
+
+variable "database_username" {
+  description = "The username for database"
+}
+
+variable "database_password" {
+  description = "The user password for database"
+}
+
+variable "environment" {
+  description = "The environment"
+}

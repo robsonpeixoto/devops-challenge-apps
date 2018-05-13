@@ -15,7 +15,7 @@ resource "aws_eip" "nat_eip" {
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = "${aws_eip.nat_eip.id}"
-  subnet_id     = "${element(aws_subnet.challenge-PubSN0.*.id, 0)}"
+  subnet_id     = "${element(aws_subnet.challenge-PubSN.*.id, 0)}"
   depends_on    = ["aws_internet_gateway.challengeIG"]
 
   tags {
@@ -25,7 +25,7 @@ resource "aws_nat_gateway" "nat" {
 }
 
 # Public subnet
-resource "aws_subnet" "challenge-PubSN0" {
+resource "aws_subnet" "challenge-PubSN" {
   vpc_id                  = "${aws_vpc.challengeVPC.id}"
   count                   = "${length(var.public_subnets_cidr)}"
   cidr_block              = "${element(var.public_subnets_cidr, count.index)}"
@@ -38,7 +38,7 @@ resource "aws_subnet" "challenge-PubSN0" {
 }
 
 # Routing table for public subnet
-resource "aws_route_table" "challenge-PubSN0-RT" {
+resource "aws_route_table" "challenge-PubSN-RT" {
   vpc_id = "${aws_vpc.challengeVPC.id}"
   route {
     cidr_block = "0.0.0.0/0"
@@ -51,7 +51,7 @@ resource "aws_route_table" "challenge-PubSN0-RT" {
 }
 
 # Associate the routing table to public subnet
-resource "aws_route_table_association" "challenge-PubSN0-RTAssn" {
-  subnet_id = "${aws_subnet.challenge-PubSN0.id}"
-  route_table_id = "${aws_route_table.challenge-PubSN0-RT.id}"
+resource "aws_route_table_association" "challenge-PubSN-RTAssn" {
+  subnet_id = "${aws_subnet.challenge-PubSN.id}"
+  route_table_id = "${aws_route_table.challenge-PubSN-RT.id}"
 }
