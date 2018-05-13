@@ -4,6 +4,7 @@ resource "aws_internet_gateway" "challengeIG" {
   vpc_id = "${aws_vpc.challengeVPC.id}"
   tags {
     Name = "challengeIG"
+    Environment = "${var.environment}"
   }
 }
 
@@ -40,10 +41,6 @@ resource "aws_subnet" "challenge-PubSN" {
 # Routing table for public subnet
 resource "aws_route_table" "challenge-PubSN-RT" {
   vpc_id = "${aws_vpc.challengeVPC.id}"
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = "${aws_internet_gateway.challengeIG.id}"
-  }
   tags {
     Name        = "${var.environment}-public-route-table"
     Environment = "${var.environment}"

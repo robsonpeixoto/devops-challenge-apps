@@ -15,10 +15,7 @@ resource "aws_subnet" "challenge-PrivSN" {
 # Routing table for private subnet
 resource "aws_route_table" "challenge-PrivSN-RT" {
   vpc_id = "${aws_vpc.challengeVPC.id}"
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = "${aws_internet_gateway.challengeIG.id}"
-  }
+
   tags {
     Name        = "${var.environment}-private-route-table"
     Environment = "${var.environment}"

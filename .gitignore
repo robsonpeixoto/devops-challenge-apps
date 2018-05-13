@@ -121,4 +121,4 @@ nbproject
 # Terraform
 ################################################
 terraform/.terraform
-terraform/*.tfstate
+terraform/*.tfstate*

@@ -6,6 +6,7 @@ resource "random_id" "target_group_sufix" {
 resource "aws_alb_target_group" "alb_api_target_group" {
   name     = "${var.environment}-alb-target-group-${random_id.target_group_sufix.hex}"
   port     = 5000
+
   protocol = "HTTP"
   vpc_id   = "${var.vpc_id}"
   target_type = "ip"
@@ -23,7 +24,7 @@ resource "aws_security_group" "api_inbound_sg" {
   ingress {
     from_port   = 5000
     to_port     = 5000
-    protocol    = "tcp"
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 

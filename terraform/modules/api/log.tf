@@ -3,6 +3,6 @@ resource "aws_cloudwatch_log_group" "api" {
 
   tags {
     Environment = "${var.environment}"
-    Application = "api"
+    Application = "Api"
   }
 }

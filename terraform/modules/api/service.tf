@@ -1,7 +1,7 @@
 /* Security Group for ECS */
 resource "aws_security_group" "ecs_api_service" {
   vpc_id      = "${var.vpc_id}"
-  name        = "${var.environment}-ecs-service-sg"
+  name        = "${var.environment}-ecs-api-service-sg"
   description = "Allow egress from container"
 
   egress {
