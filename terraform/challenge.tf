@@ -25,6 +25,7 @@ module "database" {
 }
 
 module "api" {
+  region            = "${var.region}"
   source            = "./modules/api"
   environment       = "${var.environment}"
   vpc_id            = "${module.network.vpc_id}"
@@ -39,5 +40,6 @@ module "api" {
   database_username   = "${var.database_username}"
   database_password   = "${var.database_password}"
   api_image           = "${var.api_image}"
+  api_port            = "${var.api_port}"
   availability_zones  = "${var.availability_zones}"
 }

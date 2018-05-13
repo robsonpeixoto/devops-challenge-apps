@@ -45,3 +45,11 @@ variable "database_name" {
 variable "api_image"{
   description = "The docker image will be used to deploy api"
 }
+
+variable "api_port"{
+  description = "The port will be used to deploy api"
+  default = 5000
+}
+variable "region" {
+  description = "The region of aws will be used to launch application"
+}

@@ -26,3 +26,8 @@ variable "environment" {
 variable "api_image"{
   description = "The docker image will be used to deploy api"
 }
+
+variable "api_port"{
+  description = "The port will be used to deploy api"
+  default = 5000
+}

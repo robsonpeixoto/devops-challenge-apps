@@ -4,8 +4,8 @@
     "image": "${image}",
     "portMappings": [
       {
-        "containerPort": 5000,
-        "hostPort": 5000
+        "containerPort": ${api_port},
+        "hostPort": ${api_port}
       }
     ],
     "memory": 300,
@@ -14,7 +14,7 @@
       "logDriver": "awslogs",
       "options": {
         "awslogs-group": "${log_group}",
-        "awslogs-region": "us-east-2",
+        "awslogs-region": "${region}",
         "awslogs-stream-prefix": "api"
       }
     },
@@ -25,7 +25,7 @@
       },
       {
         "name": "PORT",
-        "value": "5000"
+        "value": "${api_port}"
       }
     ]
   }

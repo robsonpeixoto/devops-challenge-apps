@@ -7,3 +7,4 @@ database_username   = "DevOps01"
 database_password   = "DevOps01"
 
 api_image           = "raphaelneumann/stone-challenge-api"
+api_port            = 4000

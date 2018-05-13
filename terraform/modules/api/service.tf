@@ -46,7 +46,7 @@ resource "aws_ecs_service" "api" {
   load_balancer {
     target_group_arn = "${aws_alb_target_group.alb_api_target_group.arn}"
     container_name   = "api"
-    container_port   = "5000"
+    container_port   = "${var.api_port}"
   }
 
   depends_on = ["aws_alb_target_group.alb_api_target_group"]

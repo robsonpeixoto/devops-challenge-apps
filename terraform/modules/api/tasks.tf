@@ -5,6 +5,8 @@ data "template_file" "api_task" {
     image           = "${var.api_image}"
     database_url    = "postgresql://${var.database_username}:${var.database_password}@${var.database_endpoint}:5432/${var.database_name}"
     log_group       = "${aws_cloudwatch_log_group.api.name}"
+    api_port        = "${var.api_port}"
+    region          = "${var.region}"
   }
 }
 

@@ -5,7 +5,7 @@ resource "random_id" "target_group_sufix" {
 
 resource "aws_alb_target_group" "alb_api_target_group" {
   name     = "${var.environment}-alb-target-group-${random_id.target_group_sufix.hex}"
-  port     = 5000
+  port     = "${var.api_port}"
 
   protocol = "HTTP"
   vpc_id   = "${var.vpc_id}"
@@ -22,8 +22,8 @@ resource "aws_security_group" "api_inbound_sg" {
   vpc_id      = "${var.vpc_id}"
 
   ingress {
-    from_port   = 5000
-    to_port     = 5000
+    from_port   = "${var.api_port}"
+    to_port     = "${var.api_port}"
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -60,7 +60,7 @@ resource "aws_alb" "alb_api" {
 
 resource "aws_alb_listener" "api" {
   load_balancer_arn = "${aws_alb.alb_api.arn}"
-  port              = "5000"
+  port              = "${var.api_port}"
   protocol          = "HTTP"
   depends_on        = ["aws_alb_target_group.alb_api_target_group"]
 
