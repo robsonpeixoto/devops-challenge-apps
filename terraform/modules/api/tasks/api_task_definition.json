@@ -1,0 +1,32 @@
+[
+  {
+    "name": "api",
+    "image": "${image}",
+    "portMappings": [
+      {
+        "containerPort": 5000,
+        "hostPort": 5000
+      }
+    ],
+    "memory": 300,
+    "networkMode": "awsvpc",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "api"
+      }
+    },
+    "environment": [
+      {
+        "name": "DB",
+        "value": "${database_url}"
+      },
+      {
+        "name": "PORT",
+        "value": "5000"
+      }
+    ]
+  }
+]

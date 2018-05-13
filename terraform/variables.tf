@@ -22,3 +22,7 @@ variable "database_password" {
 variable "environment" {
   description = "The environment"
 }
+
+variable "api_image"{
+  description = "The docker image will be used to deploy api"
+}

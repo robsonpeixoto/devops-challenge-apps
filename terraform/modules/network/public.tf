@@ -52,6 +52,7 @@ resource "aws_route_table" "challenge-PubSN-RT" {
 
 # Associate the routing table to public subnet
 resource "aws_route_table_association" "challenge-PubSN-RTAssn" {
-  subnet_id = "${aws_subnet.challenge-PubSN.id}"
+  count           = "${length(var.public_subnets_cidr)}"
+  subnet_id       = "${element(aws_subnet.challenge-PubSN.*.id, count.index)}"
   route_table_id = "${aws_route_table.challenge-PubSN-RT.id}"
 }
