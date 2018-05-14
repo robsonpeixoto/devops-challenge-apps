@@ -31,3 +31,11 @@ variable "api_port"{
   description = "The port will be used to deploy api"
   default = 5000
 }
+variable "web_port"{
+  description = "The port will be used to deploy api"
+  default = 3000
+}
+
+variable "web_image"{
+  description = "The docker image will be used to deploy web application"
+}
