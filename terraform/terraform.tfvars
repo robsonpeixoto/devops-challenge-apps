@@ -8,3 +8,6 @@ database_password   = "DevOps01"
 
 api_image           = "raphaelneumann/stone-challenge-api"
 api_port            = 4000
+
+web_image           = "raphaelneumann/stone-challenge-web"
+web_port            = 3000
