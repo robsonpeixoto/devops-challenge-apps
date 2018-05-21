@@ -26,21 +26,22 @@ variable "public_subnet_ids" {
   description = "The private subnets to use"
 }
 
-variable "api_port"{
+variable "api_port" {
   description = "The port will be used to deploy api"
 }
+
 variable "region" {
   description = "The region of aws will be used to launch application"
 }
 
-variable "web_port"{
+variable "web_port" {
   description = "The port will be used to deploy api"
 }
 
-variable "api_url"{
+variable "api_url" {
   description = "Url to access api"
 }
 
-variable "web_image"{
+variable "web_image" {
   description = "The docker image will be used to deploy web application"
 }

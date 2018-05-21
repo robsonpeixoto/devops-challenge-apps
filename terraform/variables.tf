@@ -23,19 +23,20 @@ variable "environment" {
   description = "The environment"
 }
 
-variable "api_image"{
+variable "api_image" {
   description = "The docker image will be used to deploy api"
 }
 
-variable "api_port"{
+variable "api_port" {
   description = "The port will be used to deploy api"
-  default = 5000
-}
-variable "web_port"{
-  description = "The port will be used to deploy api"
-  default = 3000
+  default     = 5000
 }
 
-variable "web_image"{
+variable "web_port" {
+  description = "The port will be used to deploy api"
+  default     = 3000
+}
+
+variable "web_image" {
   description = "The docker image will be used to deploy web application"
 }

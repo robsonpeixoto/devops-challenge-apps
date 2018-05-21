@@ -3,10 +3,11 @@
 */
 data "aws_iam_policy_document" "ecs_service_role" {
   statement {
-    effect = "Allow"
+    effect  = "Allow"
     actions = ["sts:AssumeRole"]
+
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["ecs.amazonaws.com"]
     }
   }
@@ -19,8 +20,9 @@ resource "aws_iam_role" "ecs_role" {
 
 data "aws_iam_policy_document" "ecs_service_policy" {
   statement {
-    effect = "Allow"
+    effect    = "Allow"
     resources = ["*"]
+
     actions = [
       "elasticloadbalancing:Describe*",
       "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
@@ -28,7 +30,7 @@ data "aws_iam_policy_document" "ecs_service_policy" {
       "ec2:Describe*",
       "ec2:AuthorizeSecurityGroupIngress",
       "ecs:SubmitTaskStateChange",
-      "ecs:SubmitContainerStateChange"
+      "ecs:SubmitContainerStateChange",
     ]
   }
 }
@@ -45,6 +47,7 @@ resource "aws_iam_role" "ecs_execution_role" {
   name               = "ecs_task_execution_role"
   assume_role_policy = "${file("${path.module}/policies/ecs-task-execution-role.json")}"
 }
+
 resource "aws_iam_role_policy" "ecs_execution_role_policy" {
   name   = "ecs_execution_role_policy"
   policy = "${file("${path.module}/policies/ecs-execution-role-policy.json")}"
@@ -55,6 +58,7 @@ resource "aws_iam_role" "ecs_autoscale_role" {
   name               = "${var.environment}_ecs_autoscale_role"
   assume_role_policy = "${file("${path.module}/policies/ecs-autoscale-role.json")}"
 }
+
 resource "aws_iam_role_policy" "ecs_autoscale_role_policy" {
   name   = "ecs_autoscale_role_policy"
   policy = "${file("${path.module}/policies/ecs-autoscale-role-policy.json")}"

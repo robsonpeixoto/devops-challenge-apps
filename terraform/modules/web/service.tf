@@ -27,7 +27,7 @@ resource "aws_security_group" "ecs_web_service" {
 /* Simply specify the family to find the latest ACTIVE revision in that family */
 data "aws_ecs_task_definition" "web" {
   task_definition = "${aws_ecs_task_definition.web.family}"
-  depends_on = [ "aws_ecs_task_definition.web" ]
+  depends_on      = ["aws_ecs_task_definition.web"]
 }
 
 resource "aws_ecs_service" "web" {
@@ -35,7 +35,7 @@ resource "aws_ecs_service" "web" {
   task_definition = "${aws_ecs_task_definition.web.family}:${max("${aws_ecs_task_definition.web.revision}", "${data.aws_ecs_task_definition.web.revision}")}"
   desired_count   = 2
   launch_type     = "FARGATE"
-  cluster =       "${aws_ecs_cluster.web-cluster.id}"
+  cluster         = "${aws_ecs_cluster.web-cluster.id}"
   depends_on      = ["aws_iam_role_policy.ecs_service_role_policy"]
 
   network_configuration {

@@ -1,12 +1,13 @@
 /* the task definition for the web service */
 data "template_file" "web_task" {
   template = "${file("${path.module}/tasks/web_task_definition.json")}"
+
   vars {
-    image           = "${var.web_image}"
-    api_url         = "http://${var.api_url}:${var.api_port}"
-    log_group       = "${aws_cloudwatch_log_group.web.name}"
-    web_port        = "${var.web_port}"
-    region          = "${var.region}"
+    image     = "${var.web_image}"
+    api_url   = "http://${var.api_url}:${var.api_port}"
+    log_group = "${aws_cloudwatch_log_group.web.name}"
+    web_port  = "${var.web_port}"
+    region    = "${var.region}"
   }
 }
 

@@ -8,11 +8,10 @@ resource "aws_appautoscaling_target" "target" {
 }
 
 resource "aws_appautoscaling_policy" "up" {
-  name                    = "${var.environment}_scale_up"
-  service_namespace       = "ecs"
-  resource_id             = "service/${aws_ecs_cluster.api-cluster.name}/${aws_ecs_service.api.name}"
-  scalable_dimension      = "ecs:service:DesiredCount"
-
+  name               = "${var.environment}_scale_up"
+  service_namespace  = "ecs"
+  resource_id        = "service/${aws_ecs_cluster.api-cluster.name}/${aws_ecs_service.api.name}"
+  scalable_dimension = "ecs:service:DesiredCount"
 
   step_scaling_policy_configuration {
     adjustment_type         = "ChangeInCapacity"
@@ -21,7 +20,7 @@ resource "aws_appautoscaling_policy" "up" {
 
     step_adjustment {
       metric_interval_lower_bound = 0
-      scaling_adjustment = 1
+      scaling_adjustment          = 1
     }
   }
 
@@ -29,10 +28,10 @@ resource "aws_appautoscaling_policy" "up" {
 }
 
 resource "aws_appautoscaling_policy" "down" {
-  name                    = "${var.environment}_scale_down"
-  service_namespace       = "ecs"
-  resource_id             = "service/${aws_ecs_cluster.api-cluster.name}/${aws_ecs_service.api.name}"
-  scalable_dimension      = "ecs:service:DesiredCount"
+  name               = "${var.environment}_scale_down"
+  service_namespace  = "ecs"
+  resource_id        = "service/${aws_ecs_cluster.api-cluster.name}/${aws_ecs_service.api.name}"
+  scalable_dimension = "ecs:service:DesiredCount"
 
   step_scaling_policy_configuration {
     adjustment_type         = "ChangeInCapacity"
@@ -41,7 +40,7 @@ resource "aws_appautoscaling_policy" "down" {
 
     step_adjustment {
       metric_interval_lower_bound = 0
-      scaling_adjustment = -1
+      scaling_adjustment          = -1
     }
   }
 

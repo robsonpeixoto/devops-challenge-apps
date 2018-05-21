@@ -2,14 +2,15 @@ resource "random_id" "target_group_sufix" {
   byte_length = 2
 }
 
-
 resource "aws_alb_target_group" "alb_api_target_group" {
-  name     = "${var.environment}-alb-target-group-${random_id.target_group_sufix.hex}"
-  port     = "${var.api_port}"
+  name = "${var.environment}-alb-target-group-${random_id.target_group_sufix.hex}"
+  port = "${var.api_port}"
 
-  protocol = "HTTP"
-  vpc_id   = "${var.vpc_id}"
+  protocol    = "HTTP"
+  vpc_id      = "${var.vpc_id}"
   target_type = "ip"
+
+  depends_on = ["aws_alb.alb_api"]
 
   lifecycle {
     create_before_destroy = true
