@@ -3,7 +3,7 @@
 This section explain how do complete deploy of devops-challenge api and web application on AWS cloud.
 
 1. Install AWSCLI.
-  
+
   `$pip install wascli`
 
 2. Configure aws credencials
@@ -37,6 +37,6 @@ $terraform init`
 
 7. Get coffee and be happy :D, The action of provision will be slow
 
-6. Get the endpoys `alb_api_dns_name` and `alb_web_dns_name`.
+6. Get the endpoys `alb_web_dns_name`.
 
 7. Go to url `http://<alb_web_dns_name.value>:<web_port>` 
