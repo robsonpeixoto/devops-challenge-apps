@@ -1,0 +1,28 @@
+Olá, 
+
+Não consegui terminar todo o teste, por falta de tempo. 
+Mas aqui estão algumas das minhas considerações sobre o que fiz: 
+
+O primeiro entregável está completo, qualquer dev consegue montar o ambiente a partir dos meus Dockerfiles + Docker-compose. 
+
+O segundo entregável também. Como não haviam muitas especificações fui no básico feijão com arroz de kubernetes Serverless, e acho que atende ao teste. 
+Nesse passo importante ressaltar que usei os modulos do terraform apenas para mostrar que sei usa-los. Nos projetos que trabalho costumo por variável em quase tudo, para deixar os modulos mais flexíveis a demandas. 
+
+Usei Azure porque o lab que eu tenho acesso me dá acesso full para testar coisas lá. E por algum motivo desconhecido a GCP não aceitou meu cartão de crédito :`( 
+
+Tanto o banco quanto o AKS foram testados, e no AKS deixo para voces usarem uma credencial de voces uma vez que eu usei o do lab que tenho acesso. 
+
+No terceiro ponto não ficou muito claro para mim o que deveria ser feito com ansible. Uma vez que apos meus ymls do kubernetes criados os mesmos são rodados da minha máquina ou de qualquer otra com a acesso ao kubectl e com o kubeconfig configurado. Neste caso o que poderia ser feito éra implementar uma pipeline.
+
+
+Deixei os yamls da aplicação na pasta kubernetes. 
+
+Realmente, no teste não pude colocar 50% do meu conhecimento em prática, por ter feito num tempo bem curtinho. Mas estou muito empolgado com a oportunidade e estou aberto para testes. Desde que os mesmos sejam um pouquinho mais curtos.
+
+As imagens dockerfile estão em victorferreira/web:latest e victorferreira/api:latest
+
+
+Muito obrigado, e se der certo, vou adorar discutir com voces minhas soluções! 
+
+
+

@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=rolling
+      - POSTGRES_USER=stone
+      - POSTGRES_PASSWORD=stoned
+      - POSTGRES_PORT=5423
+      - PORT=5423
+    ports:
+      - "5432:5432"
+
+  web:
+    build:
+      # depends_on:
+      #   - api
+      context: ./web
+      dockerfile: Dockerfile
+    environment:
+      - API_HOST=http://api:3000
+      - WEB_PORT=8080
+    ports:
+      - "8080:8080"
+
+  api:
+    build:
+      # depends_on:
+      #   - db
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+      - API_PORT=3000
+      - DB=postgres://stone:stoned@db:5432/rolling
+    ports:
+      - "3000:3000"

@@ -1,0 +1,27 @@
+webVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: devops
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: victorferreira/web:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: API_HOST
+          value: "http://api:3000"
+        - name: WEB_PORT
+          value: "8080"
